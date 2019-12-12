@@ -1,23 +1,33 @@
 var express = require("express");
-
-var PORT = process.env.PORT || 8080;
+var logger = require("morgan");
+var mongoose = require("mongoose");
+var axios = require("axios");
+var cheerio = require("cheerio");
+var exphbs = require("express-handlebars");
 
 var app = express();
+var PORT = process.env.PORT || 8080;
 
-app.use(express.static("public"));
-
+app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var exphbs = require("express-handlebars");
+app.use(express.static("public"));
 
+// Connect to the Mongo DB
+mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+
+// Handlebars 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var routes = require("./controllers/scraperController.js");
+// var routes = require("./controllers/scraperController.js");
 
-app.use(routes);
+// app.use(routes);
+
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 app.listen(PORT, function() {
-  console.log("Server listening on: http://localhost:" + PORT);
+  console.log("Serer listening on: http://localhost:" + PORT);
 });
