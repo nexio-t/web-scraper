@@ -3,27 +3,32 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var ResultsSchema = new Schema({
-  airline: {
+  date: {
     type: String,
     trim: true,
     required: true
   },
-  price: {
+  race: {
     type: String,
     trim: true,
     required: true
   },
-  stop: {
+  raceDescription: {
     type: String,
     trim: true,
     required: true
   },
-  depart: {
+  description: {
     type: String,
     trim: true,
     required: true
   },
-  return: {
+  location: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  locationLink: {
     type: String,
     required: true
   }
