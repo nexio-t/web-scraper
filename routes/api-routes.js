@@ -27,14 +27,26 @@ module.exports = function(app) {
                     let date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
 
                     console.log("ele 1 " + date);
-                } else {
+                } else if (i < 3) {
                    
-                    let date = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
-                    console.log("ele 2 " + date);
+                    let raceName = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                    console.log("ele 2 " + raceName);
 
-                    let googleLink = $(element).children().eq(i).find("a").attr("href");
+                    let raceDesc = $(element).children().eq(i).children().eq(1).text().replace(/\s\s+/g, ' ').trim(); 
+                    console.log("ele 3 " + raceDesc);
 
-                    console.log("ele 3 " + googleLink);
+                    let moreInfoLink = $(element).children().eq(i).find("a").attr("href");
+
+                    console.log("ele 4 " + moreInfoLink);
+
+                } else {
+
+                    let location = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                    console.log("ele 5 " + location);
+
+                    let googleMapsLink = $(element).children().eq(i).find("a").attr("href");
+
+                    console.log("ele 6 " + googleMapsLink);
 
                 }
 
