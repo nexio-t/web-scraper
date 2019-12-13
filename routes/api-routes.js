@@ -4,7 +4,9 @@ const cheerio = require('cheerio');
 var mongoose = require("mongoose");
 
 // This talks to the ORM (Mongoose)
-var db = require("../models/Result.js");
+var db = require("../models");
+
+// var app = express();
 
 module.exports = function(app) {
 
@@ -14,63 +16,84 @@ module.exports = function(app) {
 
             let $ = cheerio.load(response.data);
 
-            let races = []; 
+            // let races = []; 
 
             $(".panel-body tr").each(function(i, element) {
 
-                console.log("--------");
+                if (i !== 0) {
 
-                let date;
-                let raceName;
-                let raceDesc;
-                let moreInfoLink;
-                let location;
-                let googleMapsLink;
+                    console.log(i);
 
-            for (var i = 1; i < 4; i++) {
-      
-                if (i < 2) {
+                    console.log("--------");
 
-                    date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
+                    let race = {};
+    
+                    let date;
+                    let raceName;
+                    let raceDesc;
+                    let moreInfoLink;
+                    let location;
+                    let googleMapsLink;
+    
+                for (var i = 1; i < 4; i++) {
+          
+                    if (i < 2) {
+    
+                        date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
+    
+                        console.log("ele 1 " + date);
+                    } else if (i < 3) {
+                       
+                        raceName = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                        console.log("ele 2 " + raceName);
+    
+                        raceDesc = $(element).children().eq(i).children().eq(1).text().replace(/\s\s+/g, ' ').trim(); 
+                        console.log("ele 3 " + raceDesc);
+    
+                        moreInfoLink = $(element).children().eq(i).find("a").attr("href");
+    
+                        console.log("ele 4 " + moreInfoLink);
+    
+                    } else {
+    
+                        location = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                        console.log("ele 5 " + location);
+    
+                        googleMapsLink = $(element).children().eq(i).find("a").attr("href");
+    
+                        console.log("ele 6 " + googleMapsLink);
+    
+                    }
+    
+                }
+    
+                race.date = date;
+                race.race = raceName;
+                race.raceDescription = raceDesc;
+                race.redirectLink = moreInfoLink;
+                race.location = location; 
+                race.googleMapsLink = googleMapsLink; 
+    
+                console.log(race);
+    
+    
+                // db.Result.create(race)
+                //     .then(function(data) {
+                //         console.log("database data is:" + data);
+                //     })
+                //     .catch(function(err) {
+                //         console.log(err);
+                //     })
 
-                    console.log("ele 1 " + date);
-                } else if (i < 3) {
-                   
-                    raceName = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
-                    console.log("ele 2 " + raceName);
-
-                    raceDesc = $(element).children().eq(i).children().eq(1).text().replace(/\s\s+/g, ' ').trim(); 
-                    console.log("ele 3 " + raceDesc);
-
-                    moreInfoLink = $(element).children().eq(i).find("a").attr("href");
-
-                    console.log("ele 4 " + moreInfoLink);
-
-                } else {
-
-                    location = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
-                    console.log("ele 5 " + location);
-
-                    googleMapsLink = $(element).children().eq(i).find("a").attr("href");
-
-                    console.log("ele 6 " + googleMapsLink);
+                var newResult = new db.Result(race);
+                newResult.save(function (err) {
+                    if (err) return handleError(err);
+                })
 
                 }
 
-            }
-
-            races.push({
-                date: date,
-                race: raceName,
-                raceDescription: raceDesc, 
-                redirectLink: moreInfoLink,
-                location: location, 
-                googleMapsLink: googleMapsLink
-            })
 
             });
- 
-            console.log(races);
 
             res.send("Scrape done.")
     
