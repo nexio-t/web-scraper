@@ -8,43 +8,50 @@ var db = require("../models/Result.js");
 
 module.exports = function(app) {
 
-    app.get("/", function(req, res) {
+    app.get("/scrape", function(req, res) {
 
         axios.get("https://www.runningintheusa.com/").then(function(response) {
 
-            var $ = cheerio.load(response.data);
+            let $ = cheerio.load(response.data);
 
-            var races = []; 
+            let races = []; 
 
             $(".panel-body tr").each(function(i, element) {
 
                 console.log("--------");
 
+                let date;
+                let raceName;
+                let raceDesc;
+                let moreInfoLink;
+                let location;
+                let googleMapsLink;
+
             for (var i = 1; i < 4; i++) {
       
                 if (i < 2) {
 
-                    let date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
+                    date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
 
                     console.log("ele 1 " + date);
                 } else if (i < 3) {
                    
-                    let raceName = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                    raceName = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
                     console.log("ele 2 " + raceName);
 
-                    let raceDesc = $(element).children().eq(i).children().eq(1).text().replace(/\s\s+/g, ' ').trim(); 
+                    raceDesc = $(element).children().eq(i).children().eq(1).text().replace(/\s\s+/g, ' ').trim(); 
                     console.log("ele 3 " + raceDesc);
 
-                    let moreInfoLink = $(element).children().eq(i).find("a").attr("href");
+                    moreInfoLink = $(element).children().eq(i).find("a").attr("href");
 
                     console.log("ele 4 " + moreInfoLink);
 
                 } else {
 
-                    let location = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
+                    location = $(element).children().eq(i).find("b").text().replace(/\s\s+/g, ' ').trim(); 
                     console.log("ele 5 " + location);
 
-                    let googleMapsLink = $(element).children().eq(i).find("a").attr("href");
+                    googleMapsLink = $(element).children().eq(i).find("a").attr("href");
 
                     console.log("ele 6 " + googleMapsLink);
 
@@ -52,9 +59,21 @@ module.exports = function(app) {
 
             }
 
+            races.push({
+                date: date,
+                race: raceName,
+                raceDescription: raceDesc, 
+                redirectLink: moreInfoLink,
+                location: location, 
+                googleMapsLink: googleMapsLink
+            })
+
             });
-          
-            // console.log(results);
+ 
+            console.log(races);
+
+            res.send("Scrape done.")
+    
           });
     
           });

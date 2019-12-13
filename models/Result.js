@@ -18,7 +18,7 @@ var ResultsSchema = new Schema({
     trim: true,
     required: true
   },
-  description: {
+  redirectLink: {
     type: String,
     trim: true,
     required: true
@@ -28,7 +28,7 @@ var ResultsSchema = new Schema({
     trim: true,
     required: true
   },
-  locationLink: {
+  googleMapsLink: {
     type: String,
     required: true
   }
