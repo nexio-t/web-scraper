@@ -1,0 +1,12 @@
+<ul>
+    {{#each races}}
+    <li>
+        {{date}}
+
+        <button class="delete-cat" data-id="{{this.id}}">DELETE!</button>
+    </li>
+    <li>
+        {{race}}
+    </li>
+    {{/each}}
+</ul>

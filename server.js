@@ -6,17 +6,19 @@ var cheerio = require("cheerio");
 var exphbs = require("express-handlebars");
 
 var app = express();
+
+var routes = require("./routes");
+
 var PORT = process.env.PORT || 8080;
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
-
 app.use(express.static("public"));
+
+/******Question: Do I need an app.use?*****/
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/webScraper", { useNewUrlParser: true });
