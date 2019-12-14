@@ -11,13 +11,23 @@
     {{/each}}
 </ul> --}}
 
-<div class="container">
+<div class="container-fluid">
 
 {{!-- insert jumbotron here  --}}
 
 
 
-<div class="jumbotron"></div>
+<div class="jumbotron">
+
+    <div class="button-container text-center">
+
+        <a class="newRacesBtn btn btn-dark" href="/save">Find New Races</a>
+
+        <a class="savedRacesBtn btn btn-dark" href="/save">Saved Races</a>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -28,11 +38,8 @@
 
     <div class="card col-3">
     
-
     <p class="race">{{race}}</p>
 
-
-  
     <p class="date">{{date}} | {{location}} </p>
      {{!-- <p class="location">{{location}}</p> --}}
     <p class="raceDesc">{{raceDescription}}</p>
