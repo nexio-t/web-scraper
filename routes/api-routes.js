@@ -35,6 +35,7 @@ router.get("/scrape", function(req, res) {
             for (var i = 1; i < 4; i++) {
         
                 if (i < 2) {
+                    // I think adding another "children" below will just grab the date
 
                     date = $(element).children().eq(i).children().eq(0).text().replace(/\s\s+/g, ' ').trim(); 
 

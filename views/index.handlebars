@@ -1,4 +1,4 @@
-<ul>
+{{!-- <ul>
     {{#each races}}
     <li>
         {{date}}
@@ -9,4 +9,49 @@
         {{race}}
     </li>
     {{/each}}
-</ul>
+</ul> --}}
+
+<div class="container">
+
+{{!-- insert jumbotron here  --}}
+
+
+
+<div class="jumbotron"></div>
+
+</div>
+
+
+<div class="card-container container">
+
+    {{#each races}}
+
+    <div class="card col-3">
+    
+
+    <p class="race">{{race}}</p>
+
+
+  
+    <p class="date">{{date}} | {{location}} </p>
+     {{!-- <p class="location">{{location}}</p> --}}
+    <p class="raceDesc">{{raceDescription}}</p>
+
+    <a class="saveBtn btn btn-outline-info" href="/save">Save</a>
+
+    
+   
+    <div class="row">
+  <a class="redirectLink btn btn-outline-success" href="https://www.runningintheusa.com/{{redirectLink}}">More info</a>
+    <a class="googleMaps btn btn-outline-warning" href="{{googleMapsLink}}">Google Maps</a>
+    </div>
+
+  
+    
+    </div>
+
+     {{/each}}
+
+</div>
+
+   <script src="https://use.fontawesome.com/6207dd8341.js"></script>

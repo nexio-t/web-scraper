@@ -1,0 +1,59 @@
+.card {
+    float: left;
+    position: fixed; 
+    left: 3.5%;
+    margin: 10px 30px;
+    width: 350px;
+    height: 210px;
+}
+
+.race {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.1em; 
+}
+
+.date {
+    color: gray; 
+    font-size: 0.8em;
+    margin-bottom: 5px;
+}
+
+.raceDesc {
+    color: black; 
+    font-size: 0.8em;
+    margin-bottom: 4px;
+}
+
+.card-container.container {
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+.googleMaps {
+    position: absolute; 
+    font-size: 10pt !important;
+  right: 10px; 
+  bottom: 10px;
+    margin-left: 15px; 
+    height: 30px !important;
+}
+
+.redirectLink {
+    position: absolute; 
+    font-size: 10pt !important;
+  left: 0px; 
+  bottom: 10px;
+    margin-left: 15px;
+    height: 30px !important;
+}
+
+.saveBtn {
+    position: absolute;
+    left: 15px; 
+    bottom: 50px;
+    font-size: 10pt !important;
+    height: 30px !important;
+    width: 50px !important;
+}
+
