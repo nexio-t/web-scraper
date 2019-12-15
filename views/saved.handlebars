@@ -16,13 +16,6 @@
 
 <div class="jumbotron">
 
-    <div class="button-container text-center">
-
-        <a class="newRacesBtn btn btn-dark" href="/results/scrape">Find New Races</a>
-
-        <a class="removeRacesBtn btn btn-dark" href="/clear">Remove Races</a>
-
-    </div>
 
 </div>
 
@@ -30,18 +23,17 @@
 <div class="card-container container">
 
     {{#each races}}
+    {{#if saved}}
 
     <div class="card col-3">
     
     <p class="race">{{race}}</p>
 
     <p class="date">{{date}} | {{location}} </p>
-     {{!-- <p class="location">{{location}}</p> --}}
+   
     <p class="raceDesc">{{raceDescription}}</p>
 
     <a class="saveBtn btn btn-outline-info" href="/save">Save</a>
-
-    
    
     <div class="row">
   <a class="redirectLink btn btn-outline-success" href="https://www.runningintheusa.com/{{redirectLink}}">More info</a>
@@ -51,6 +43,8 @@
   
     
     </div>
+
+    {{/if}}
 
      {{/each}}
 

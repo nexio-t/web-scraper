@@ -59,7 +59,7 @@ $(document).on("click", ".saveBtn", function(e) {
         url: "/results/scrape/" + raceId, 
         data: {saved: true}
     }).then(function() {
-        console.log("udpated race to saved");
+        console.log("udpated  to saved");
         location.reload(); 
     });
 
