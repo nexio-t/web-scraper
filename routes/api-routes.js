@@ -99,6 +99,17 @@ router.get("/scrape", function(req, res) {
 
         });
 
+router.delete("/scrape", function(req, res) {
+
+    db.Result.deleteMany({})
+    .then(function(result) {
+        console.log(result);
+        res.send("delete worked!!!")
+    });
+    
+
+})
+
 module.exports = router; 
 
 
