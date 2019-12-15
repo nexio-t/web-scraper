@@ -20,6 +20,8 @@ app.use(express.static("public"));
 /******Question: Do I need an app.use?*****/
 app.use(routes);
 
+
+
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/webScraper", { useNewUrlParser: true });
 
