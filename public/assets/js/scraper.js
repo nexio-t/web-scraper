@@ -45,11 +45,7 @@ $(document).on("click", ".removeRacesBtn", function(e) {
 
 });
 
-
-    $(document).ajaxStop(function(){
-        window.location.reload();
-    });
-
+// Create on click event to update the data attribute 
 
 
 

@@ -31,6 +31,11 @@ var ResultsSchema = new Schema({
   googleMapsLink: {
     type: String,
     required: true
+  },
+  saved: {
+    type: Boolean,
+    required: true, 
+    default: false
   }
 });
 
