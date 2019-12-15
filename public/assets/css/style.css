@@ -57,9 +57,19 @@
     width: 50px !important;
 }
 
-.button-container {
-   
+.unSaveBtn {
+    position: absolute;
+    left: 15px; 
+    bottom: 50px;
+    font-size: 10pt !important;
+    height: 30px !important;
+    width: 65px !important;
 }
+
+
+/* .button-container {
+   
+} */
 
 /* .newRacesBtn {
 display: block !important;

@@ -63,8 +63,25 @@ $(document).on("click", ".saveBtn", function(e) {
         location.reload(); 
     });
 
-    // grab the id 
-    // change the saved attribute to saved 
+})
+
+// Unsave event  
+
+$(document).on("click", ".unSaveBtn", function(e) {
+    e.preventDefault(); 
+
+    let raceId = $(this).attr("data-id"); 
+
+    console.log(raceId);
+
+    $.ajax({
+        type: "PUT", 
+        url: "/results/scrape/" + raceId, 
+        data: {saved: false}
+    }).then(function() {
+        console.log("udpated to saved false");
+        location.reload(); 
+    });
 
 })
 
