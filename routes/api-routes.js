@@ -6,7 +6,7 @@ var router = require("express").Router();
 // This talks to the ORM (Mongoose)
 var db = require("../models");
 
-
+// Run scrape 
 router.get("/scrape", function(req, res) {
 
     axios.get("https://www.runningintheusa.com/").then(function(response) {
@@ -99,6 +99,7 @@ router.get("/scrape", function(req, res) {
 
         });
 
+// Remove collection 
 router.delete("/scrape", function(req, res) {
 
     db.Result.deleteMany({})
@@ -106,7 +107,24 @@ router.delete("/scrape", function(req, res) {
         console.log(result);
         res.send("delete worked!!!")
     });
+
+// Update race to saved 
     
+
+})
+
+
+router.put("/scrape/:id", function(req, res) {
+
+    console.log(req.body);
+    console.log(req.params.id); 
+
+    db.Result.findOneAndUpdate({ _id: req.params.id}, {$set: {saved: req.body.saved} })
+    .then(function(result) {
+        console.log(result);
+        res.send("updated race to saved!")
+    });
+
 
 })
 

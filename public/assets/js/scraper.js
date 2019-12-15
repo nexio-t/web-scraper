@@ -39,7 +39,7 @@ $(document).on("click", ".removeRacesBtn", function(e) {
             console.log(data);
         }
     }).then(function() {
-        console.log("delete callback promise working");
+       console.log("delete callback promise working");
        location.reload(); 
     });
 
@@ -47,6 +47,26 @@ $(document).on("click", ".removeRacesBtn", function(e) {
 
 // Create on click event to update the data attribute 
 
+$(document).on("click", ".saveBtn", function(e) {
+    e.preventDefault(); 
+
+    let raceId = $(this).attr("data-id"); 
+
+    console.log(raceId);
+
+    $.ajax({
+        type: "PUT", 
+        url: "/results/scrape/" + raceId, 
+        data: {saved: true}
+    }).then(function() {
+        console.log("udpated race to saved");
+        location.reload(); 
+    });
+
+    // grab the id 
+    // change the saved attribute to saved 
+
+})
 
 
 
