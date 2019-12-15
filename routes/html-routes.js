@@ -24,6 +24,22 @@ router.get("/", function(req, res) {
 
 });
 
+router.get("/saved", function(req, res) {
+
+  db.Result.find({})
+    .then(function(result) {
+      let resultObj = {
+        races: result
+      };
+      console.log("result is: " + resultObj);
+      res.render("saved", resultObj)
+    })
+    .catch(function(err) {
+      res.json(err);
+    })
+
+});
+
 module.exports = router; 
 
 

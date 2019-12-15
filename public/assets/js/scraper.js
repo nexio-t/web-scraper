@@ -26,7 +26,6 @@ $(document).on("click", ".newRacesBtn", function(e) {
 
 });
 
-
 $(document).on("click", ".removeRacesBtn", function(e) {
 
     e.preventDefault(); 
@@ -43,8 +42,6 @@ $(document).on("click", ".removeRacesBtn", function(e) {
         console.log("delete callback promise working");
        location.reload(); 
     });
-
-
 
 });
 
