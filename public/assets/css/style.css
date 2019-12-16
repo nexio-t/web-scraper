@@ -7,6 +7,32 @@
     height: 210px;
 }
 
+
+.savedCard {
+    float: left;
+    position: fixed; 
+    left: 3.5%;
+    margin: 10px 30px;
+    width: 350px;
+    height: 210px;
+}
+
+.addComment {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 8pt !important;
+    height: 30px !important;
+    color: blue !important;
+}
+
+
+
+.add-comment{
+    height: 30px !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+
 .race {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -49,23 +75,33 @@
 }
 
 .saveBtn {
-    position: absolute;
+    /* position: absolute;
     left: 15px; 
-    bottom: 50px;
-    font-size: 10pt !important;
+    bottom: 50px; */
+    /* float: right; */
+    font-size: 8pt !important;
     height: 30px !important;
-    width: 50px !important;
+    width: 100px !important;
+    color: green !important;
 }
 
 .unSaveBtn {
     position: absolute;
-    left: 15px; 
-    bottom: 50px;
+    right: 0px;
+    top: 5px;
+    font-size: 8pt !important;
+    /* left: 15px; 
+    bottom: 50px; */
     font-size: 10pt !important;
     height: 30px !important;
-    width: 65px !important;
+    width: 30px !important;
+    color: red !important;
 }
 
+body i {
+    font-family:'FontAwesome'!important;
+    font-style: normal;
+    }
 
 /* .button-container {
    
