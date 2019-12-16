@@ -1,8 +1,8 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
-var Schema = mongoose.Schema;
+let Schema = mongoose.Schema;
 
-var ResultsSchema = new Schema({
+let ResultsSchema = new Schema({
   date: {
     type: String,
     trim: true,
@@ -36,9 +36,13 @@ var ResultsSchema = new Schema({
     type: Boolean,
     required: true, 
     default: false
-  }
+  },
+  notes: [{
+    type: Schema.Types.ObjectId,
+    ref: "Note"
+  }]
 });
 
-var Result = mongoose.model("Result", ResultsSchema);
+let Result = mongoose.model("Result", ResultsSchema);
 
 module.exports = Result;

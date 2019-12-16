@@ -116,8 +116,8 @@ router.delete("/scrape", function(req, res) {
 // Update race to saved 
 router.put("/scrape/:id", function(req, res) {
 
-    console.log(req.body);
-    console.log(req.params.id); 
+    // console.log(req.body);
+    // console.log(req.params.id); 
 
     db.Result.findOneAndUpdate({ _id: req.params.id}, {$set: {saved: req.body.saved} })
     .then(function(result) {
@@ -126,7 +126,63 @@ router.put("/scrape/:id", function(req, res) {
     });
 
 
-})
+});
+
+router.post("/note/:id", function(req, res) {
+
+    // console.log("line 133 " + req.body);
+    // console.log("line 134 " + req.params.id); 
+
+    let parentRace = req.params.id; 
+    let newNote = req.body;
+
+    db.Note.create(newNote)
+        .then(function (data) {
+            return db.Result.findOneAndUpdate({_id: parentRace}, {$push: {notes: data._id},}, {new: true});
+        })
+        .then(function(data) {
+            res.json(data); 
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+});
+
+// delete a note 
+
+router.delete("/note/:id", function(req, res) {
+
+    console.log("line 156 " + req.body);
+    console.log("line 157 " + req.params.id); 
+
+    db.Note.deleteOne({ _id: req.params.id})
+        .then(function() {
+            return db.Result.updateOne({ _id: req.body.raceId }, {$pull : {notes: req.params.id}})
+        })
+        .then(function (data) {
+            res.json(data);
+        })
+
+
+});
+
+router.get("/scrape/:id", function(req, res) {
+
+    console.log(req.body);
+    console.log(req.params.id);
+
+    db.Result.findOne({ _id: req.params.id})
+        .populate("notes")
+        .then(function(data) {
+            res.json(data);
+            // return db.Note.find({ _id : { $in : data.notes}})
+        })
+        .catch(function(err) {
+            res.json(err);
+        });
+});
+
 
 module.exports = router; 
 

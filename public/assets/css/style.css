@@ -26,6 +26,16 @@
 }
 
 
+.wrapperDiv {
+    margin-top: 5px;
+    background-color: lightblue;
+}
+
+
+
+.note-text {
+    margin: 5px 5px;
+}
 
 .add-comment{
     height: 30px !important;
