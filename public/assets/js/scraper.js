@@ -65,9 +65,9 @@ $(document).on("click", ".saveBtn", function(e) {
 
 })
 
-// Unsave event  
+// Delete event  
 
-$(document).on("click", ".unSaveBtn", function(e) {
+$(document).on("click", ".removeRaceBtn", function(e) {
     e.preventDefault(); 
 
     let raceId = $(this).attr("data-id"); 
@@ -83,7 +83,52 @@ $(document).on("click", ".unSaveBtn", function(e) {
         location.reload(); 
     });
 
+});
+
+
+// add ID to modal 
+
+$(document).on("click", ".addComment", function(e) {
+
+    e.preventDefault();
+    // grab ID 
+    let raceId = $(this).attr("data-id");
+    console.log(raceId);
+
+    $(".saveNoteBtn").attr("data-id", raceId);
+
 })
+
+
+
+$(document).on("click", ".saveNoteBtn", function(e) {
+    e.preventDefault(); 
+
+    console.log("this worked");
+
+    let raceId = $(this).attr("data-id");
+    let noteArea = $("#noteTextArea").val().trim(); 
+
+    console.log(noteArea);
+    console.log(raceId);
+
+    // $.ajax({
+    //     url: "/note/" + raceId,
+    //     type: "POST",
+    //     data: {
+    //         noteText: noteArea
+    //     }
+    // }).then(function() {
+
+    //     console.log("save note worked");
+
+    // }); 
+
+    
+    // in your dot then, include a clear the text area 
+ 
+})
+
 
 
 

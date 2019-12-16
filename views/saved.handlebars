@@ -30,12 +30,12 @@
 
      <div class="text-center add-comment">
 
-                <button type="button" data-toggle="modal" data-target="#noteModal" data-id="{{id}}" data-saved="{{saved}}" class="addComment btn btn-light-secondary"> <i class="fas fa-edit"> </i>Notes</button> 
+                <button data-id="{{id}}"  type="button" data-toggle="modal" data-target="#noteModal" data-id="{{id}}" data-saved="{{saved}}" class="addComment btn btn-light-secondary"> <i class="fas fa-edit"> </i>Notes</button> 
 
                  
 
             </div>
-            <a data-id="{{id}}" data-saved="{{saved}}" class="unSaveBtn btn btn-light-secondary" href="/save"> <i class="fas fa-trash"></i> </a>
+            <a data-id="{{id}}" data-saved="{{saved}}" class="removeRaceBtn btn btn-light-secondary" href="/save"> <i class="fas fa-trash"></i> </a>
 
    
 
@@ -75,17 +75,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Race notes</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        
+        <label for="noteTextArea">Notes</label>
+    <textarea class="form-control" id="noteTextArea" rows="3"></textarea>
+
+        <div class="appendNoteArea">
+
+        </div>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+    
+        <button data-dismiss="modal" type="button" class="btn saveNoteBtn btn-primary">Save</button>
       </div>
     </div>
   </div>
