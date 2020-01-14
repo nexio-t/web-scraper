@@ -7,6 +7,15 @@
     height: 210px;
 }
 
+.home-page-jumbo {
+    background: url(../img/road-background.jpg);
+    background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+    background-size: cover;
+}
+
 
 .savedCard {
     float: left;
@@ -95,6 +104,12 @@
     color: green !important;
 }
 
+.readyToRun {
+    font-family: 'Lobster', cursive;
+    font-size: 5rem;
+    color: white;
+}
+
 .removeRaceBtn {
     position: absolute;
     right: 0px;
@@ -113,12 +128,97 @@ body i {
     font-style: normal;
     }
 
-/* .button-container {
-   
-} */
 
-/* .newRacesBtn {
-display: block !important;
-margin-right: auto ;
-margin-left: auto ;
-} */
+    @media (min-width: 200px) { 
+
+        .card {
+            float: left;
+            position: fixed; 
+            left: 2.5%;
+            margin: 10px 30px;
+            min-width: 300px !important;
+            height: 210px !important;
+        }
+
+        .savedCard {
+            float: left;
+            position: fixed; 
+            left: 2.5%;
+            margin: 10px 30px;
+            min-width: 300px !important;
+            height: 210px !important;
+        }
+
+
+     }
+
+
+    @media (min-width: 500px) { 
+
+        .card {
+            float: left;
+            position: fixed; 
+            left: 12%;
+            margin: 10px 30px;
+            min-width: 350px !important;
+            height: 210px !important;
+        }
+
+        .savedCard {
+            float: left;
+            position: fixed; 
+            left: 12%;
+            margin: 10px 30px;
+            min-width: 350px !important;
+            height: 210px !important;
+        }
+
+
+     }
+
+    @media (min-width: 768px) { 
+
+        .card {
+            float: left;
+            position: fixed; 
+            left: 20%;
+            margin: 10px 30px;
+            min-width: 350px !important;
+            height: 210px !important;
+        }
+
+        .savedCard {
+            float: left;
+            position: fixed; 
+            left: 20%;
+            margin: 10px 30px;
+            min-width: 350px !important;
+            height: 210px !important;
+        }
+
+
+     }
+    
+    @media (min-width: 992px) { 
+
+        .card {
+            float: left;
+            position: fixed; 
+            left: 3%;
+            margin: 10px 30px;
+            min-width: 240px !important;
+            min-height: 210px !important;
+        }
+
+        .savedCard {
+            float: left;
+            position: fixed; 
+            left: 3%;
+            margin: 10px 30px;
+            min-width: 240px !important;
+            min-height: 210px !important;
+        }
+
+
+     }
+
